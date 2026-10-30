@@ -1,11 +1,11 @@
 {
   "id": "course-grab",
   "name": "教务抢课",
-  "version": "1.5.1",
+  "version": "1.6.0",
   "description": "持续轮询北师大教务系统课程名额，自动选中并提交；支持多课程、多班级候选，可按专业自动获取课程列表。",
   "repository": "https://github.com/BNU-ToolBox/BTP-CourseGrab",
   "host": {
-    "min_version": "0.1.0"
+    "min_version": "0.1.1"
   },
   "entry": "plugin.py",
   "config_ui": "ui.html",
@@ -35,18 +35,6 @@
       "label": "无头模式",
       "type": "bool",
       "default": false
-    },
-    {
-      "key": "username",
-      "label": "统一认证账号(留空用全局)",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "key": "password",
-      "label": "统一认证密码(留空用全局)",
-      "type": "password",
-      "default": ""
     }
   ]
 }
