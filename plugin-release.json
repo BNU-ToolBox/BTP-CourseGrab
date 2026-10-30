@@ -6,6 +6,17 @@
   "repository": "https://github.com/BNU-ToolBox/BTP-CourseGrab",
   "versions": [
     {
+      "version": "1.6.1",
+      "release_tag": "v1.6.1",
+      "host_version": {
+        "min": "0.1.1",
+        "max": null
+      },
+      "release_url": "https://github.com/BNU-ToolBox/BTP-CourseGrab/releases/tag/v1.6.1",
+      "download_url": "https://github.com/BNU-ToolBox/BTP-CourseGrab/releases/download/v1.6.1/BTP-CourseGrab-1.6.1.zip",
+      "sha256": "fe1ee3ee5e671ff5f39e38be7bb718e8f3ece7d1ac855cd51f37a173a7ad372d"
+    },
+    {
       "version": "1.6.0",
       "release_tag": "v1.6.0",
       "host_version": {

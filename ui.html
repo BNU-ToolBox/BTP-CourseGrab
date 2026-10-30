@@ -1,7 +1,7 @@
 <div class="bnu-config" id="cg-ui">
   <!-- 专业目录引导: 全局仅需抓取一次, 之后固定使用本地缓存; 由用户点击按钮触发 -->
   <div class="bnu-alert bnu-warn" id="cg-catalog-missing" hidden>
-    <span id="cg-catalog-text">专业目录尚未抓取(全局仅需一次,完成后固定使用本地缓存,无需再获取)。</span>
+    <span id="cg-catalog-text">专业目录尚未抓取。</span>
     <button class="bnu-btn bnu-warning" id="cg-grab-catalog">抓取专业目录</button>
     <span class="bnu-hint" id="cg-catalog-hint"></span>
   </div>
@@ -73,11 +73,6 @@
 
   <div class="bnu-row">
     <button class="bnu-btn bnu-primary" id="cg-save">保存配置</button>
-    <span class="bnu-hint">
-      勾选的课程即抢课列表,无需手动输入课程代码;选好专业后点「开始专业课程抓取」
-      可抓取/更新该专业的课程缓存,完成后自动列出。配置允许为空保存
-      (抢课前先设置无头模式等选项)。保存后启动插件生效。
-    </span>
   </div>
   <div class="bnu-alert" id="cg-msg" hidden></div>
 </div>
@@ -266,7 +261,7 @@
       var empty = $("cg-courses-empty");
       empty.hidden = false;
       empty.className = "bnu-alert bnu-warn";
-      empty.textContent = "该专业课程列表尚未缓存。点上方「开始专业课程抓取」,抓取完成后会自动列出。";
+      empty.textContent = "该专业课程列表尚未缓存。";
     }
   }
 
@@ -295,8 +290,6 @@
   }
 
   async function save() {
-    // 配置允许为空保存: 抢课前可先只设置无头模式等基础选项,
-    // 课程与专业都可以之后再补(课程抓取由「开始专业课程抓取」按钮触发)
     try {
       await Z.saveConfig(collectConfig());
       Z.message("success", "配置已保存;启动插件后生效");
@@ -310,10 +303,10 @@
     var text = $("cg-catalog-text");
     var btn = $("cg-grab-catalog");
     if (mode === "partial") {
-      text.textContent = "专业目录不完整(上次抓取未完成),可重新抓取覆盖。";
+      text.textContent = "专业目录不完整，可重新抓取。";
       btn.textContent = "重新抓取专业目录";
     } else {
-      text.textContent = "专业目录尚未抓取(全局仅需一次,完成后固定使用本地缓存,无需再获取)。";
+      text.textContent = "专业目录尚未抓取。";
       btn.textContent = "抓取专业目录";
     }
     $("cg-catalog-missing").hidden = false;
@@ -616,8 +609,6 @@
     $("cg-poll").value = cfg.poll_interval != null
       ? Math.min(60, Math.max(2, Number(cfg.poll_interval) || 3)) : 3;
     $("cg-headless").checked = cfg.headless !== false;
-    $("cg-username").value = cfg.username || "";
-    $("cg-password").value = cfg.password || "";
     picked = {};
     Object.keys(cfg.courses || {}).forEach(function (code) {
       var cl = cfg.courses[code];
